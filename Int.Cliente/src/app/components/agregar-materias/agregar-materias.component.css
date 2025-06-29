@@ -1,0 +1,22 @@
+.contenedor {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.lista {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.lista ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}

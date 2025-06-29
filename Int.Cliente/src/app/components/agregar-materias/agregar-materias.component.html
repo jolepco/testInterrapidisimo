@@ -1,0 +1,27 @@
+<div class="title">Administrar Materias</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="contenedor">
+  <div class="lista">
+    <h3>Seleccionados</h3>
+    <ul>
+      <li *ngFor="let item of izquierda">
+        {{ item.nombre }}
+        <button (click)="moverADerecha(item)">→</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="lista">
+    <h3>Pendientes</h3>
+    <ul>
+      <li *ngFor="let item of derecha">
+        {{ item.nombre }}
+        <button (click)="moverAIzquierda(item)">←</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row" style="display: flex; justify-content: center; margin-top: 20px;">
+  <button  (click)="guardarmateriasxaestudiante()" [disabled]="!puedeEnviar()" mat-raised-button color="Primary"> Aceptar</button>
+  <button routerLink="/ListEstudiantes" mat-raised-button>Volver</button>
+</div>

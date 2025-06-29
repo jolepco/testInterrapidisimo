@@ -1,0 +1,47 @@
+<div class="title">
+    Listar Estudiantes
+</div>
+<br>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="container">
+
+  <mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input matInput (keyup)="applyFilter($event)"  placeholder="Buscar" #input autocomplete="off">
+</mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo Electronico </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="accion">
+    <th mat-header-cell *matHeaderCellDef> 
+     <button class="agregar" mat-raised-button color="primary" routerLink="/agregarEstudiantes">Agregar</button>   
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+        <mat-icon class="search" matTooltip="Ver Compañeros" fontIcon="search" routerLink="/verCompaneros/{{element.id}}"></mat-icon> 
+        <mat-icon class="edit" matTooltip="Editar" fontIcon="edit" [routerLink]="['/editarEstudiantes/',element.id ]"></mat-icon> 
+        <mat-icon (click)="eliminarestudiante(element.id)" class="delete" matTooltip="Eliminar" fontIcon="delete"></mat-icon> 
+         <mat-icon class="modificar" matTooltip="Agregar Materias" fontIcon="settings" routerLink="/agregarMaterias/{{element.id}}"></mat-icon> 
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+ <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
